@@ -20,29 +20,23 @@
     include_once '../Templates/defaults/pictures.php';
     ?>
 
-    <table class="table">
-        <th>nr</th>
-        <th>Merk</th>
-        <th>Type</th>
-        <th>Prijs</th>
-        <th></th>
-        <th></th>
+
 
         <?php
-        global $result;
+        global $detail;
         $num = 1;
 
-        foreach($result as &$data){
-            echo "<tr>";
-            echo "<td>" . $num . '' . "</td>" ;
-            echo "<td>" . $data['merk'] . "</td>" ;
-            echo "<td>" . $data['type'] . "</td>" ;
-            echo "<td> <a href='detail/" . $data['id']. "'>" . "Details" . "</a> </td>" ;
-            $num ++;
-            echo "</tr>";
-        }
+           foreach ($detail as &$data){
+                echo "<h2>" . "Artikelnummer:" . $data['id'] .  "<br> </h2>";
+                echo "<h2>" . "Merk: " . $data['merk'] . "<br> </h2>";
+                echo "<h2>" . "Type: " . $data['type'] . "<br> </h2>";
+                echo "<h2>" . "Voorraad: " . $data['voorraad'] . "<br> </h2>";
+                echo "<h2>" . "Prijs: &euro; " .
+            number_format($data["prijs"],2,",",",") . "<br> </h2> <br>";
+}
+
         ?>
-    </table>
+    <a href="http://healthone.localhost/fietsen">Terug naar master pagina.</a>
 </div>
 <?php      include_once '../Templates/defaults/footer.php';?>
 </body>

@@ -4,6 +4,7 @@ require '../Modules/login.php';
 require '../Modules/logout.php';
 require '../Modules/database.php';
 require '../Modules/common.php';
+require '../Modules/fietsen.php';
 
 session_start();
 //var_dump($_SESSION);
@@ -64,24 +65,15 @@ switch ($params[1]) {
         break;
 
     case 'fietsen':
-        echo "<h1>Fietsen</h1>";
-        $db = new PDO("mysql:host=localhost;dbname=fietsenmaker", "root", "");
-        $query = $db->prepare("SELECT * FROM fietsen");
-        $query->execute();
-        $result = $query->fetchAll(PDO::FETCH_ASSOC);
-        $num = 1;
-        echo "<table>";
-        foreach ($result as &$data){
-            echo "<tr>";
-            echo "<td>" . $num . " " . "</td>";
-            echo "<td>" . $data["merk"]. "</td>";
-            echo "<td>" . "<a href='detail.php?id=" . $data["id"] . "'>" . $data["type"]  . "</a>" . "</td>" ;
-            $num++;
-            echo "<tr>";
-        }
-        echo "</table>";
+        $result = getFietsen();
+        include_once "../Templates/fietsen.php";
         break;
 
+    case 'detail':
+        $detail = getfiets($params[2]);
+        var_dump($detail);
+        include_once "../Templates/detail.php";
+        break;
 
     default:
         $titleSuffix = ' | Home';
