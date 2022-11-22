@@ -24,7 +24,7 @@
         <th>nr</th>
         <th>Merk</th>
         <th>Type</th>
-        <th>Prijs</th>
+        <th></th>
         <th></th>
         <th></th>
 
@@ -38,6 +38,8 @@
             echo "<td>" . $data['merk'] . "</td>" ;
             echo "<td>" . $data['type'] . "</td>" ;
             echo "<td> <a href='detail/" . $data['id']. "'>" . "Details" . "</a> </td>" ;
+            echo "<td> <a href='update/" . $data['id']. "'>" . "update" . "</a> </td>" ;
+            echo "<td> <a href='detail/" . $data['id']. "'>" . "Delete" . "</a> </td>" ;
             $num ++;
             echo "</tr>";
         }
