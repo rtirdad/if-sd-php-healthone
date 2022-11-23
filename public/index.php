@@ -80,8 +80,11 @@ switch ($params[1]) {
         }else {
             $fiets=getFietsen($params[2]);
         }
-
         include_once "../Templates/update.php";
+        break;
+
+    case 'delete':
+        include_once "../Templates/delete.php";
         break;
 
 
